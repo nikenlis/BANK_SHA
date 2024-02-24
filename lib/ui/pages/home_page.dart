@@ -11,7 +11,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: lightBackgroundColor,
+      
       bottomNavigationBar: BottomAppBar(
         color: whiteColor,
         shape: const CircularNotchedRectangle(),
@@ -73,7 +73,7 @@ class HomePage extends StatelessWidget {
         // ignore: prefer_const_constructors
         padding: EdgeInsets.symmetric(horizontal: 24),
         children: [
-          buildProfile(),
+          buildProfile(context),
           buildWalletCard(),
           buildLevel(),
           buildServices(),
@@ -85,51 +85,57 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  Widget buildProfile() {
-    return Container(
-      margin: const EdgeInsets.only(
-        top: 40,
-      ),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                'Howdy',
-                style: greyTextStyle.copyWith(fontSize: 16),
-              ),
-              Text(
-                'Niken Lismiati',
-                style:
-                    blackTextStyle.copyWith(fontSize: 20, fontWeight: semiBold),
-              )
-            ],
-          ),
-          Container(
-            width: 60,
-            height: 60,
-            decoration: const BoxDecoration(
-              shape: BoxShape.circle,
-              image:
-                  DecorationImage(image: AssetImage('assets/img_profile.png')),
+  Widget buildProfile(BuildContext context) {
+    return GestureDetector(
+      onTap: () {
+        Navigator.pushNamed(context, '/profile');
+      },
+      child: Container(
+        margin: const EdgeInsets.only(
+          top: 40,
+        ),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Howdy',
+                  style: greyTextStyle.copyWith(fontSize: 16),
+                ),
+                Text(
+                  'Niken Lismiati',
+                  style:
+                      blackTextStyle.copyWith(fontSize: 20, fontWeight: semiBold),
+                )
+              ],
             ),
-            child: Align(
-              alignment: Alignment.topRight,
-              child: Container(
-                width: 16,
-                decoration:
-                    BoxDecoration(shape: BoxShape.circle, color: whiteColor),
-                child: Icon(
-                  Icons.check_circle,
-                  color: greenColor,
-                  size: 14,
+            Container(
+              width: 60,
+              height: 60,
+              decoration: const BoxDecoration(
+                shape: BoxShape.circle,
+                image:
+                    DecorationImage(image: AssetImage('assets/img_profile.png')),
+              ),
+              child: Align(
+                alignment: Alignment.topRight,
+                child: Container(
+                  width: 16,
+                  height: 16,
+                  decoration:
+                      BoxDecoration(shape: BoxShape.circle, color: whiteColor),
+                  child: Icon(
+                    Icons.check_circle,
+                    color: greenColor,
+                    size: 14,
+                  ),
                 ),
               ),
-            ),
-          )
-        ],
+            )
+          ],
+        ),
       ),
     );
   }
@@ -361,26 +367,26 @@ class HomePage extends StatelessWidget {
           const SizedBox(
             height: 14,
           ),
-          const Wrap(
+          Wrap(
             spacing: 17,
             runSpacing: 18,
             children: [
               HomeTipsItem(
               imageUrl: 'assets/img_tips1.png',
               title: 'Best tips for using a credit card',
-              url: 'https://forumasisten.or.id/'),
+              url: Uri.parse('https://flutter.dev')),
               HomeTipsItem(
               imageUrl: 'assets/img_tips2.png',
               title: 'Sopt the good pie of finance model',
-              url: 'https://forumasisten.or.id/'),
+              url: Uri.parse('https://tv12.nontondrama.click/game-of-thrones-season-5-episode-5-2011/')),
               HomeTipsItem(
               imageUrl: 'assets/img_tips3.png',
               title: 'Great hack to get better advice',
-              url: 'https://forumasisten.or.id/'),
+              url: Uri.parse('https://pub.dev/packages/url_launcher')),
               HomeTipsItem(
               imageUrl: 'assets/img_tips4.png',
               title: 'Save more penny buy this instead',
-              url: 'https://forumasisten.or.id/'),
+              url: Uri.parse('https://www.youtube.com/')),
             ],
           )
         ]));

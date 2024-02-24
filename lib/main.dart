@@ -1,5 +1,6 @@
 
 import 'package:coba/shared/theme.dart';
+import 'package:coba/ui/pages/profile_page.dart';
 import 'package:flutter/material.dart';
 import 'package:coba/ui/pages/home_page.dart';
 import 'package:coba/ui/pages/onboarding_page.dart';
@@ -46,6 +47,7 @@ class MyApp extends StatelessWidget {
           'sign-up-set-ktp' :(context) => const SignUpSetKtPage(),
           '/sign-up-success': (context) => const SignUpSuccessPage(),
           '/home': (context) => const HomePage(),
+          '/profile' :(context) => const ProfilePage()
           
         },
       );
