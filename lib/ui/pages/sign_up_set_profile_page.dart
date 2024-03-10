@@ -87,7 +87,7 @@ class _SignUpSetProfilePageState extends State<SignUpSetProfilePage> {
                 ),
                 CustomFormField(
                   title: 'Set PIN (6 digit number)',
-                  obscureText: true,
+                  obsecureText: true,
                   controller: pinController,
                 ),
                 const SizedBox(

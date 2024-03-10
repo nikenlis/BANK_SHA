@@ -1,6 +1,19 @@
 
 import 'package:coba/shared/theme.dart';
+import 'package:coba/ui/pages/data_package_page.dart';
+import 'package:coba/ui/pages/data_provider_page.dart';
+import 'package:coba/ui/pages/data_success_page.dart';
+import 'package:coba/ui/pages/pin_page.dart';
+import 'package:coba/ui/pages/profile_edit_page.dart';
+import 'package:coba/ui/pages/profile_edit_pin_page.dart';
+import 'package:coba/ui/pages/profile_edit_success_page.dart';
 import 'package:coba/ui/pages/profile_page.dart';
+import 'package:coba/ui/pages/topup_amount_page.dart';
+import 'package:coba/ui/pages/topup_page.dart';
+import 'package:coba/ui/pages/topup_success_page.dart';
+import 'package:coba/ui/pages/transfer_amount_page.dart';
+import 'package:coba/ui/pages/transfer_page.dart';
+import 'package:coba/ui/pages/transfer_success_page.dart';
 import 'package:flutter/material.dart';
 import 'package:coba/ui/pages/home_page.dart';
 import 'package:coba/ui/pages/onboarding_page.dart';
@@ -47,7 +60,20 @@ class MyApp extends StatelessWidget {
           'sign-up-set-ktp' :(context) => const SignUpSetKtPage(),
           '/sign-up-success': (context) => const SignUpSuccessPage(),
           '/home': (context) => const HomePage(),
-          '/profile' :(context) => const ProfilePage()
+          '/profile' :(context) => const ProfilePage(),
+          '/pin' :(context) => const PinPage(),
+          '/profile-edit':(context) => const ProfileEditPage(),
+          '/profile-edit-pin' :(context) => const ProfileEditPinPage(),
+          '/profile-edit-success' :(context) => const ProfileEditSuccessPage(),
+          '/topup' :(context) => const TopupPage(),
+          '/topup-amount' :(context) => const TopupAmountPage(),
+          '/topup-success' :(context) => const TopupSuccess(),
+          '/transfer' :(context) => const TransferPage(),
+          '/transfer-amount' :(context) => const TransferAmountPage(),
+          '/transfer-success' :(context) => const TransferSuccessPage(),
+          '/data-provider' :(context) => const DataProviderPage(),
+          '/data-package' :(context) => const DataPackagePage(),
+          '/data-success' :(context) => const DataSuccessPage(),
           
         },
       );

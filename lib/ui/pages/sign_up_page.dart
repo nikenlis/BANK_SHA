@@ -77,7 +77,7 @@ class _SignUpPageState extends State<SignUpPage> {
                 // NOTE: PASSWORD INPUT
                 CustomFormField(
                   title: 'Password',
-                  obscureText: true,
+                  obsecureText: true,
                   controller: passwordController,
                 ),
 

@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:coba/shared/theme.dart';
 
@@ -106,6 +105,30 @@ class CustomInputButton extends StatelessWidget {
             ),
           ),
         ),
+      ),
+    );
+  }
+}
+
+class CustomInputBotton extends StatelessWidget {
+   final String title;
+   final VoidCallback? onTap;
+  const CustomInputBotton({super.key, required this.title, required this.onTap});
+
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        height: 60,
+        width: 60,
+        decoration:
+            BoxDecoration(shape: BoxShape.circle, color: numberBackgroundColor),
+        child: Center(
+            child: Text(
+          title,
+          style: whiteTextStyle.copyWith(fontSize: 22, fontWeight: semiBold),
+        )),
       ),
     );
   }

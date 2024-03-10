@@ -69,7 +69,8 @@ class _SignInPageState extends State<SignInPage> {
                     // NOTE: PASSWORD INPUT
                     CustomFormField(
                       title: 'Password',
-                      obscureText: true,
+                      obsecureText: true,
+                      iconVisibility: true,
                       controller: passwordController,
                     ),
                     const SizedBox(

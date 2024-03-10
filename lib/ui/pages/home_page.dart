@@ -11,7 +11,6 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      
       bottomNavigationBar: BottomAppBar(
         color: whiteColor,
         shape: const CircularNotchedRectangle(),
@@ -76,7 +75,7 @@ class HomePage extends StatelessWidget {
           buildProfile(context),
           buildWalletCard(),
           buildLevel(),
-          buildServices(),
+          buildServices(context),
           buildLatestTransaction(),
           buildSendAgain(),
           buildFriendlyTips(),
@@ -106,8 +105,8 @@ class HomePage extends StatelessWidget {
                 ),
                 Text(
                   'Niken Lismiati',
-                  style:
-                      blackTextStyle.copyWith(fontSize: 20, fontWeight: semiBold),
+                  style: blackTextStyle.copyWith(
+                      fontSize: 20, fontWeight: semiBold),
                 )
               ],
             ),
@@ -116,8 +115,8 @@ class HomePage extends StatelessWidget {
               height: 60,
               decoration: const BoxDecoration(
                 shape: BoxShape.circle,
-                image:
-                    DecorationImage(image: AssetImage('assets/img_profile.png')),
+                image: DecorationImage(
+                    image: AssetImage('assets/img_profile.png')),
               ),
               child: Align(
                 alignment: Alignment.topRight,
@@ -221,7 +220,7 @@ class HomePage extends StatelessWidget {
     );
   }
 
-  Widget buildServices() {
+  Widget buildServices(BuildContext context) {
     return Container(
       margin: const EdgeInsets.only(top: 30),
       child: Column(
@@ -240,12 +239,16 @@ class HomePage extends StatelessWidget {
               HomeServiceItem(
                 iconUrl: 'assets/ic_topup.png',
                 title: 'Top Up',
-                onTap: () {},
+                onTap: () {
+                  Navigator.pushNamed(context, '/topup');
+                },
               ),
               HomeServiceItem(
                 iconUrl: 'assets/ic_send.png',
                 title: 'Send',
-                onTap: () {},
+                onTap: () {
+                  Navigator.pushNamed(context, '/transfer');
+                },
               ),
               HomeServiceItem(
                 iconUrl: 'assets/ic_withdraw.png',
@@ -255,7 +258,11 @@ class HomePage extends StatelessWidget {
               HomeServiceItem(
                 iconUrl: 'assets/ic_more.png',
                 title: 'More',
-                onTap: () {},
+                onTap: () {
+                  showDialog(
+                      context: context,
+                      builder: (context) => const MoreDiaglog());
+                },
               ),
             ],
           )
@@ -372,23 +379,105 @@ class HomePage extends StatelessWidget {
             runSpacing: 18,
             children: [
               HomeTipsItem(
-              imageUrl: 'assets/img_tips1.png',
-              title: 'Best tips for using a credit card',
-              url: Uri.parse('https://flutter.dev')),
+                  imageUrl: 'assets/img_tips1.png',
+                  title: 'Best tips for using a credit card',
+                  url: Uri.parse('https://flutter.dev')),
               HomeTipsItem(
-              imageUrl: 'assets/img_tips2.png',
-              title: 'Sopt the good pie of finance model',
-              url: Uri.parse('https://tv12.nontondrama.click/game-of-thrones-season-5-episode-5-2011/')),
+                  imageUrl: 'assets/img_tips2.png',
+                  title: 'Sopt the good pie of finance model',
+                  url: Uri.parse(
+                      'https://tv12.nontondrama.click/game-of-thrones-season-5-episode-5-2011/')),
               HomeTipsItem(
-              imageUrl: 'assets/img_tips3.png',
-              title: 'Great hack to get better advice',
-              url: Uri.parse('https://pub.dev/packages/url_launcher')),
+                  imageUrl: 'assets/img_tips3.png',
+                  title: 'Great hack to get better advice',
+                  url: Uri.parse('https://pub.dev/packages/url_launcher')),
               HomeTipsItem(
-              imageUrl: 'assets/img_tips4.png',
-              title: 'Save more penny buy this instead',
-              url: Uri.parse('https://www.youtube.com/')),
+                  imageUrl: 'assets/img_tips4.png',
+                  title: 'Save more penny buy this instead',
+                  url: Uri.parse('https://www.youtube.com/')),
             ],
           )
         ]));
+  }
+}
+
+class MoreDiaglog extends StatelessWidget {
+  const MoreDiaglog({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    return AlertDialog(
+      backgroundColor: Colors.transparent,
+      insetPadding: EdgeInsets.zero,
+      alignment: Alignment.bottomCenter,
+      content: Container(
+        padding: const EdgeInsets.all(30),
+        height: 326,
+        width: MediaQuery.of(context).size.width,
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(40),
+            color: lightBackgroundColor),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+
+            Text(
+              'Do More With Us',
+              style:
+                  blackTextStyle.copyWith(fontSize: 16, fontWeight: semiBold),
+            ),
+            const SizedBox(height: 13,),
+            Wrap(
+              spacing: 29,
+              runSpacing: 29,
+              children: [
+                HomeServiceItem(
+                iconUrl: 'assets/ic_product_data.png',
+                title: 'Data',
+                onTap: () {
+                  Navigator.pushNamed(context, '/data-provider');
+                },
+              ),
+              HomeServiceItem(
+                iconUrl: 'assets/ic_product_water.png',
+                title: 'Water',
+                onTap: () {
+
+                },
+              ),
+              HomeServiceItem(
+                iconUrl: 'assets/ic_product_stream.png',
+                title: 'Stream',
+                onTap: () {
+
+                },
+              ),
+              HomeServiceItem(
+                iconUrl: 'assets/ic_product_movie.png',
+                title: 'Movie',
+                onTap: () {
+
+                },
+              ),
+              HomeServiceItem(
+                iconUrl: 'assets/ic_product_food.png',
+                title: 'Food',
+                onTap: () {
+
+                },
+              ),
+              HomeServiceItem(
+                iconUrl: 'assets/ic_product_travel.png',
+                title: 'Travel',
+                onTap: () {
+
+                },
+              ),
+              ],
+            )
+          ],
+        ),
+      ),
+    );
   }
 }
