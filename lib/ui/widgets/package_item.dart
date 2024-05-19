@@ -1,3 +1,4 @@
+import 'package:coba/shared/share_method.dart';
 import 'package:coba/shared/theme.dart';
 import 'package:flutter/material.dart';
 
@@ -30,7 +31,7 @@ class PackageItem extends StatelessWidget {
         children: [
             Text('${amount}GB', style: blackTextStyle.copyWith(fontSize: 32, fontWeight: medium),),
             const SizedBox(height: 2,),
-            Text('Rp $price', style: greyTextStyle.copyWith(fontSize: 12),),
+            Text(formatCurrency(price), style: greyTextStyle.copyWith(fontSize: 12),),
         ],
       ),
     );

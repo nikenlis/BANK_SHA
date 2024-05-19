@@ -1,4 +1,5 @@
 
+import 'package:coba/blocs/auth/auth_bloc.dart';
 import 'package:coba/shared/theme.dart';
 import 'package:coba/ui/pages/data_package_page.dart';
 import 'package:coba/ui/pages/data_provider_page.dart';
@@ -23,6 +24,7 @@ import 'package:coba/ui/pages/sign_up_set_ktp_page.dart';
 import 'package:coba/ui/pages/sign_up_set_profile_page.dart';
 import 'package:coba/ui/pages/sign_up_success_page.dart';
 import 'package:coba/ui/pages/splash_page.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 
 
@@ -34,48 +36,53 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-        debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-          scaffoldBackgroundColor: lightBackgroundColor,
-          appBarTheme: AppBarTheme(
-            backgroundColor: lightBackgroundColor,
-            elevation: 0,
-            centerTitle: true,
-            iconTheme: IconThemeData(
-              color: blackColor,
-            ),
-            titleTextStyle: blackTextStyle.copyWith(
-              fontSize: 20,
-              fontWeight: semiBold,
+    return MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (context) => AuthBloc())
+    ],
+      child: MaterialApp(
+          debugShowCheckedModeBanner: false,
+          theme: ThemeData(
+            scaffoldBackgroundColor: lightBackgroundColor,
+            appBarTheme: AppBarTheme(
+              backgroundColor: lightBackgroundColor,
+              elevation: 0,
+              centerTitle: true,
+              iconTheme: IconThemeData(
+                color: blackColor,
+              ),
+              titleTextStyle: blackTextStyle.copyWith(
+                fontSize: 20,
+                fontWeight: semiBold,
+              ),
             ),
           ),
+          routes: {
+            '/': (context) => const SplashPage(),
+            '/onboarding': (context) => const OnboardingPage(),
+            '/sign-in': (context) => const SignInPage(),
+            '/sign-up': (context) => const SignUpPage(),
+            '/sign-up-set-profile' :(context) => const SignUpSetProfilePage(),
+            'sign-up-set-ktp' :(context) => const SignUpSetKtPage(),
+            '/sign-up-success': (context) => const SignUpSuccessPage(),
+            '/home': (context) => const HomePage(),
+            '/profile' :(context) => const ProfilePage(),
+            '/pin' :(context) => const PinPage(),
+            '/profile-edit':(context) => const ProfileEditPage(),
+            '/profile-edit-pin' :(context) => const ProfileEditPinPage(),
+            '/profile-edit-success' :(context) => const ProfileEditSuccessPage(),
+            '/topup' :(context) => const TopupPage(),
+            '/topup-amount' :(context) => const TopupAmountPage(),
+            '/topup-success' :(context) => const TopupSuccess(),
+            '/transfer' :(context) => const TransferPage(),
+            '/transfer-amount' :(context) => const TransferAmountPage(),
+            '/transfer-success' :(context) => const TransferSuccessPage(),
+            '/data-provider' :(context) => const DataProviderPage(),
+            '/data-package' :(context) => const DataPackagePage(),
+            '/data-success' :(context) => const DataSuccessPage(),
+            
+          },
         ),
-        routes: {
-          '/': (context) => const SplashPage(),
-          '/onboarding': (context) => const OnboardingPage(),
-          '/sign-in': (context) => const SignInPage(),
-          '/sign-up': (context) => const SignUpPage(),
-          '/sign-up-set-profile' :(context) => const SignUpSetProfilePage(),
-          'sign-up-set-ktp' :(context) => const SignUpSetKtPage(),
-          '/sign-up-success': (context) => const SignUpSuccessPage(),
-          '/home': (context) => const HomePage(),
-          '/profile' :(context) => const ProfilePage(),
-          '/pin' :(context) => const PinPage(),
-          '/profile-edit':(context) => const ProfileEditPage(),
-          '/profile-edit-pin' :(context) => const ProfileEditPinPage(),
-          '/profile-edit-success' :(context) => const ProfileEditSuccessPage(),
-          '/topup' :(context) => const TopupPage(),
-          '/topup-amount' :(context) => const TopupAmountPage(),
-          '/topup-success' :(context) => const TopupSuccess(),
-          '/transfer' :(context) => const TransferPage(),
-          '/transfer-amount' :(context) => const TransferAmountPage(),
-          '/transfer-success' :(context) => const TransferSuccessPage(),
-          '/data-provider' :(context) => const DataProviderPage(),
-          '/data-package' :(context) => const DataPackagePage(),
-          '/data-success' :(context) => const DataSuccessPage(),
-          
-        },
-      );
+    );
   }
 }

@@ -10,14 +10,14 @@ class DataPackagePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text('Beli Data'),),
+      appBar: AppBar(title: const Text('Beli Data'),),
       body: ListView(
         padding: const EdgeInsets.all(24),
         children: [
           const SizedBox(height: 30,),
           Text('Phone Number', style: blackTextStyle.copyWith(fontSize: 16, fontWeight: semiBold),),
           const SizedBox(height: 14,),
-          CustomFormField(title: '+628', isShowTitle: false,),
+          const CustomFormField(title: '+628', isShowTitle: false,),
           const SizedBox(height: 40,),
           Text('Select Package', style: blackTextStyle.copyWith(fontSize: 16, fontWeight: semiBold),),
           const SizedBox(

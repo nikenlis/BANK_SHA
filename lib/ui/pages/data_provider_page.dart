@@ -1,3 +1,4 @@
+import 'package:coba/shared/share_method.dart';
 import 'package:coba/shared/theme.dart';
 import 'package:coba/ui/widgets/buttons.dart';
 import 'package:coba/ui/widgets/data_provider_item.dart';
@@ -46,7 +47,7 @@ class DataProviderPage extends StatelessWidget {
                     height: 2,
                   ),
                   Text(
-                    'Balance: Rp 180.000',
+                    'Balance: ${formatCurrency(180000)}',
                     style: greyTextStyle.copyWith(
                         fontSize: 12, fontWeight: regular),
                   )

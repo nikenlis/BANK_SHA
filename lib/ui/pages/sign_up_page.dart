@@ -1,3 +1,4 @@
+import 'package:coba/shared/share_method.dart';
 import 'package:flutter/material.dart';
 import 'package:coba/shared/theme.dart';
 import 'package:coba/ui/widgets/buttons.dart';
@@ -15,10 +16,18 @@ class _SignUpPageState extends State<SignUpPage> {
   final emailController = TextEditingController(text: '');
   final passwordController = TextEditingController(text: '');
 
+  bool validate() {
+    if (nameController.text.isEmpty ||
+        emailController.text.isEmpty ||
+        passwordController.text.isEmpty) {
+      return false;
+    }
+    return true;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-     
       body: ListView(
         padding: const EdgeInsets.symmetric(
           horizontal: 24,
@@ -84,9 +93,16 @@ class _SignUpPageState extends State<SignUpPage> {
                 const SizedBox(
                   height: 30,
                 ),
-                CustomFilledButton(title: 'Continue', onPressed: (){
-                  Navigator.pushNamed(context, '/sign-up-set-profile');
-                },)
+                CustomFilledButton(
+                  title: 'Continue',
+                  onPressed: () {
+                    if (validate()) {
+                      Navigator.pushNamed(context, '/sign-up-set-profile');
+                    } else {
+                      showCustomSnackbar(context, 'Semua Field Harus diIsi');
+                    }
+                  },
+                )
               ],
             ),
           ),
@@ -96,8 +112,12 @@ class _SignUpPageState extends State<SignUpPage> {
           CustomTextButton(
             title: 'Sign In',
             onPressed: () {
-              Navigator.pushNamedAndRemoveUntil(context, '/sign-in', ((route) => false));
+              Navigator.pushNamedAndRemoveUntil(
+                  context, '/sign-in', ((route) => false));
             },
+          ),
+          const SizedBox(
+            height: 50,
           ),
         ],
       ),
